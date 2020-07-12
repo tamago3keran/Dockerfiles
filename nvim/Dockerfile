@@ -35,9 +35,10 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 -m pip install neovim && \
     rm get-pip.py
 
-RUN cd ~/.config && \
-    git clone https://github.com/tamago3keran/nvim.git
+RUN cd $HOME && \
+    git clone https://github.com/tamago3keran/dotfiles.git && \
+    sh $HOME/dotfiles/.bin/link_dotfiles.sh
 
-RUN curl -sf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s /root/.cache/dein
+RUN curl -sf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s $HOME/.cache/dein
 
 RUN nvim +:UpdateRemotePlugins +:LspInstallServer +:q
