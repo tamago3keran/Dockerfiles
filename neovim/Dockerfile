@@ -26,3 +26,5 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.local/share/dein/toml ~/.local/share/dein/toml && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
     ln -s /dotfiles/.software_configurations ~/.software_configurations
+
+RUN nvim +:q
