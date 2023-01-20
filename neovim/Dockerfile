@@ -1,10 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt update && \
-    apt install -y software-properties-common && \
-    add-apt-repository -y ppa:git-core/ppa
-
-RUN apt install -y curl git ripgrep unzip wget
+RUN apt update && apt install -y curl git ripgrep unzip wget
 
 RUN wget https://github.com/neovim/neovim/releases/download/v0.8.2/nvim-linux64.deb && \
     apt install ./nvim-linux64.deb && \
