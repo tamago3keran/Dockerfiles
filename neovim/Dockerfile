@@ -14,7 +14,7 @@ RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/inst
     sh installer.sh '~/.local/share/dein' --use-neovim-config && \
     rm installer.sh
 
-RUN curl -fsSL https://deno.land/install.sh | sh
+RUN curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
 
 RUN git clone https://github.com/tamago3keran/dotfiles.git
 
