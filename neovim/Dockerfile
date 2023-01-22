@@ -21,6 +21,7 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim && \
     ln -s /dotfiles/.local/share/dein/toml ~/.local/share/dein/toml && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
-    ln -s /dotfiles/.software_configurations ~/.software_configurations
+    ln -s /dotfiles/.software_configurations ~/.software_configurations && \
+    ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
 RUN nvim +:q
