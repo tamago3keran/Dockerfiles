@@ -23,6 +23,6 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN apt install build-essential rubygems ruby-dev && gem install solargraph
+RUN apt install -y build-essential rubygems ruby-dev && gem install solargraph
 
 RUN nvim +:q
