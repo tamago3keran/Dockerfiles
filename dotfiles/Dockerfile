@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt update && apt install -y curl git ripgrep unzip wget
+RUN apt update && apt install -y curl git ripgrep unzip vim wget
 
 RUN wget https://github.com/neovim/neovim/releases/download/v0.8.2/nvim-linux64.deb && \
     apt install ./nvim-linux64.deb && \
@@ -21,7 +21,6 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim && \
     ln -s /dotfiles/.local/share/dein/toml ~/.local/share/dein/toml && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
-    ln -s /dotfiles/.software_configurations ~/.software_configurations && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
 RUN apt install -y npm --no-install-recommends && npm install -g vim-language-server
