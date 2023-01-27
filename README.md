@@ -11,4 +11,3 @@ There are some directories in this repository. Each repository has a Dockerfile,
 |base|neovim plugins|
 |dotfiles|neovim plugins + LSP ( Vim script )
 |ruby|neovim plugins + LSP ( Ruby )
-
