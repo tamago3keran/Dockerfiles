@@ -23,6 +23,10 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN apt install -y npm --no-install-recommends && npm install -g vim-language-server
+RUN curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh && \
+    bash nodesource_setup.sh && \
+    rm nodesource_setup.sh && \
+    apt install -y nodejs && \
+    npm install -g vim-language-server
 
 RUN nvim +:q
