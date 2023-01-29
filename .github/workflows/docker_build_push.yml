@@ -42,16 +42,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and push for ruby image
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          file: ./ruby/Dockerfile
-          platforms: linux/amd64
-          tags: tamago3keran/dotfiles:ruby
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
       - name: Build and push for react image
         uses: docker/build-push-action@v3
         with:
@@ -59,5 +49,15 @@ jobs:
           file: ./react/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:react
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push for ruby image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: ./ruby/Dockerfile
+          platforms: linux/amd64
+          tags: tamago3keran/dotfiles:ruby
           cache-from: type=gha
           cache-to: type=gha,mode=max
