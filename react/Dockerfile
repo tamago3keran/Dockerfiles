@@ -12,6 +12,9 @@ RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/inst
 
 RUN curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
 
+RUN apt install -y locales && \
+    locale-gen ja_JP.UTF-8
+
 RUN git clone -b react https://github.com/tamago3keran/dotfiles.git
 
 RUN rm ~/.bashrc && \
