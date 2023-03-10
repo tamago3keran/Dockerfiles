@@ -32,6 +32,16 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Build and push for copilot image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: ./copilot/Dockerfile
+          platforms: linux/amd64
+          tags: tamago3keran/dotfiles:copilot
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Build and push for dotfiles image
         uses: docker/build-push-action@v3
         with:
