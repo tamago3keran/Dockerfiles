@@ -9,7 +9,6 @@ There are some directories in this repository. Each repository has a Dockerfile,
 |Directory|Function|
 |:--:|:--|
 |base|neovim plugins|
-|copilot|neovim plugins + GitHub Copilot|
 |dotfiles|neovim plugins + LSP ( Vim script )|
 |react|neovim plugins + LSP ( ESLint, TypeScript Language Server )|
 |ruby|neovim plugins + LSP ( Ruby )|
