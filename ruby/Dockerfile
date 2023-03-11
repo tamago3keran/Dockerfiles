@@ -28,6 +28,9 @@ RUN rm ~/.bashrc && \
     ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+    apt install -y nodejs
+
 RUN apt install -y build-essential rubygems ruby-dev && gem install solargraph
 
 RUN nvim +:q
