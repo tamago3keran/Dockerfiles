@@ -4,7 +4,7 @@ RUN apt update && \
     apt-get update && \
     apt install -y curl git ripgrep unzip vim wget
 
-RUN wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.deb && \
+RUN wget https://github.com/neovim/neovim/releases/download/v0.8.2/nvim-linux64.deb && \
     apt install ./nvim-linux64.deb && \
     rm ./nvim-linux64.deb
 
