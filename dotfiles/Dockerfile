@@ -16,7 +16,9 @@ RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/inst
     sh installer.sh '~/.local/share/dein' --use-neovim-config && \
     rm installer.sh
 
-RUN curl -fsSL https://deno.land/install.sh v1.39.4 | DENO_INSTALL=/usr/local sh
+RUN curl -fsSLO https://deno.land/install.sh \
+    && DENO_INSTALL=/usr/local sh install.sh v1.39.4 \
+    && rm install.sh
 
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
