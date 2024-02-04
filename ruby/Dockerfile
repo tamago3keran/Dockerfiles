@@ -12,7 +12,7 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.
     rm -rf nvim-linux64 && \
     rm nvim-linux64.tar.gz
 
-RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh && \
+RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh v1.39.4 && \
     sh installer.sh '~/.local/share/dein' --use-neovim-config && \
     rm installer.sh
 
