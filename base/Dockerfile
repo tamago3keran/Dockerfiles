@@ -13,7 +13,6 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.
     rm nvim-linux64.tar.gz
 
 RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh && \
-    ls -ld /root/.local/share/dein && \
     mkdir -p "${HOME}/.local/share/dein" && \
     ls -ld /root/.local/share/dein && \
     sh installer.sh "${HOME}/.local/share/dein" --use-neovim-config && \
