@@ -29,7 +29,7 @@ jobs:
           file: ./base/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:base
-          cache-to: type=local
+          cache-to: type=local,dest=/tmp/docker-cache
 
       - name: Build and push for dotfiles image
         uses: docker/build-push-action@v3
@@ -38,7 +38,7 @@ jobs:
           file: ./dotfiles/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:dotfiles
-          cache-from: type=local
+          cache-from: type=local,dest=/tmp/docker-cache
 
       - name: Build and push for react image
         uses: docker/build-push-action@v3
@@ -47,7 +47,7 @@ jobs:
           file: ./react/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:react
-          cache-from: type=local
+          cache-from: type=local,dest=/tmp/docker-cache
 
       - name: Build and push for ruby image
         uses: docker/build-push-action@v3
@@ -56,7 +56,7 @@ jobs:
           file: ./ruby/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:ruby
-          cache-from: type=local
+          cache-from: type=local,dest=/tmp/docker-cache
 
       - name: Build and push for python image
         uses: docker/build-push-action@v3
@@ -65,4 +65,4 @@ jobs:
           file: ./python/Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:python
-          cache-from: type=local
+          cache-from: type=local,dest=/tmp/docker-cache
