@@ -23,7 +23,7 @@ RUN curl -fsSLO https://deno.land/install.sh && \
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
 
-RUN git clone https://github.com/tamago3keran/dotfiles.git
+RUN git clone https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
 RUN rm ~/.bashrc && \
     rm ~/.config/nvim/init.vim && \
