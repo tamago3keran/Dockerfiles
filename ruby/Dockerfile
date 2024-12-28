@@ -17,7 +17,7 @@ RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/11e9af56fe0
     rm installer.sh
 
 RUN curl -fsSLO https://deno.land/install.sh && \
-    DENO_INSTALL=/usr/local sh install.sh v1.43.1 && \
+    DENO_INSTALL=/usr/local sh install.sh v2.1.4 && \
     rm install.sh
 
 RUN apt install -y locales && \
