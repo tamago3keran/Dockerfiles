@@ -24,6 +24,10 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
     git clone https://github.com/Shougo/dpp-ext-lazy -b v1.5.0 && \
     git clone https://github.com/Shougo/dpp-ext-toml -b v1.3.0
 
+RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
+    cd ~/.cache/dpp/repos/github.com/vim-denops/ && \
+    git clone https://github.com/vim-denops/denops.vim -b v7.0.4
+
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
 
