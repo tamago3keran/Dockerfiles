@@ -66,12 +66,3 @@ jobs:
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:python
           cache-from: type=local,src=/tmp/docker-cache
-
-      - name: Build and push for develop image
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          file: ./develop/Dockerfile
-          platforms: linux/amd64
-          tags: tamago3keran/dotfiles:develop
-          cache-from: type=local,src=/tmp/docker-cache
