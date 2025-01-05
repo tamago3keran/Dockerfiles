@@ -47,5 +47,5 @@ RUN rm -f ~/.bashrc && \
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
     apt install -y nodejs
 
-RUN nvim --headless +"sleep 15" +qall
+RUN nvim --cmd "autocmd VimEnter * ++once sleep 15 | qall"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +qall
