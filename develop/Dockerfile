@@ -33,8 +33,9 @@ RUN apt install -y locales && \
 
 RUN git clone -b develop https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
-RUN rm ~/.bashrc && \
-    rm ~/.config/nvim/init.vim && \
+RUN rm -f ~/.bashrc && \
+    rm -f ~/.config/nvim/init.vim && \
+    mkdir -p ~/.config/nvim && \
     ln -s /dotfiles/.bashrc ~/.bashrc && \
     ln -s /dotfiles/.bash_aliases ~/.bash_aliases && \
     ln -s /dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua && \
