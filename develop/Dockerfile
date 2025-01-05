@@ -47,5 +47,6 @@ RUN rm -f ~/.bashrc && \
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
     apt install -y nodejs
 
-RUN nvim +:q
+RUN cd dotflies && \
+    nvim +:q
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +qall
