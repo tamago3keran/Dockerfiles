@@ -12,30 +12,41 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64
     rm -rf nvim-linux64 && \
     rm nvim-linux64.tar.gz
 
-RUN wget https://raw.githubusercontent.com/Shougo/dein-installer.vim/11e9af56fe00edb06d19ee8e7f8bfb222230699b/installer.sh && \
-    sh installer.sh "~/.local/share/dein" --use-neovim-config && \
-    rm installer.sh
-
 RUN curl -fsSLO https://deno.land/install.sh && \
     DENO_INSTALL=/usr/local sh install.sh v2.1.4 && \
     rm install.sh
+
+RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
+    cd ~/.cache/dpp/repos/github.com/Shougo/ && \
+    git clone https://github.com/Shougo/dpp.vim -b v4.1.0 && \
+    git clone https://github.com/Shougo/dpp-ext-installer -b v1.3.0 && \
+    git clone https://github.com/Shougo/dpp-protocol-git -b v1.1.1 && \
+    git clone https://github.com/Shougo/dpp-ext-lazy -b v1.5.0 && \
+    git clone https://github.com/Shougo/dpp-ext-toml -b v1.3.0
+
+RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
+    cd ~/.cache/dpp/repos/github.com/vim-denops/ && \
+    git clone https://github.com/vim-denops/denops.vim -b v7.0.4
 
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
 
 RUN git clone -b react https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
-RUN rm ~/.bashrc && \
-    rm ~/.config/nvim/init.vim && \
+RUN rm -f ~/.bashrc && \
+    rm -f ~/.config/nvim/init.vim && \
+    mkdir -p ~/.config/nvim && \
     ln -s /dotfiles/.bashrc ~/.bashrc && \
     ln -s /dotfiles/.bash_aliases ~/.bash_aliases && \
-    ln -s /dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim && \
-    ln -s /dotfiles/.local/share/dein/toml ~/.local/share/dein/toml && \
-    ln -s /dotfiles/.local/share/dein/plugins ~/.local/share/dein/plugins && \
+    ln -s /dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua && \
+    ln -s /dotfiles/.config/dpp ~/.config/dpp && \
+    ln -s /dotfiles/.config/tomls ~/.config/tomls && \
+    ln -s /dotfiles/.config/hooks ~/.config/hooks && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
     apt install -y nodejs && \
     npm install -g typescript typescript-language-server vscode-langservers-extracted
 
-RUN nvim +:q
+RUN nvim --headless +"call job_start(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
+RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +"call timer_start(45000, {-> execute('qall')})"
