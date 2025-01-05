@@ -47,5 +47,5 @@ RUN rm -f ~/.bashrc && \
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
     apt install -y nodejs
 
-RUN nvim --cmd "autocmd VimEnter * ++once sleep 15 | qall"
+RUN nvim --headless +"call job_start(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +qall
