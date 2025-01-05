@@ -31,7 +31,20 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
 
+RUN git clone -b develop https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
+
+RUN rm ~/.bashrc && \
+    rm ~/.config/nvim/init.vim && \
+    ln -s /dotfiles/.bashrc ~/.bashrc && \
+    ln -s /dotfiles/.bash_aliases ~/.bash_aliases && \
+    ln -s /dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua && \
+    ln -s /dotfiles/.config/dpp ~/.config/dpp && \
+    ln -s /dotfiles/.config/tomls ~/.config/tomls && \
+    ln -s /dotfiles/.config/hooks ~/.config/hooks && \
+    ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
+
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
     apt install -y nodejs
 
-RUN nvim +:q
+RUN nvim --headless +q
+RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +qall
