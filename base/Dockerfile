@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt update && \
     apt-get update && \
-    apt install -y curl git ripgrep tar unzip vim wget
+    apt install -y curl git ripgrep tar unzip vim wget gcc
 
 RUN wget https://github.com/neovim/neovim/releases/download/v0.10.3/nvim-linux64.tar.gz && \
     tar -zxvf nvim-linux64.tar.gz && \
