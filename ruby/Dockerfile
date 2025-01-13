@@ -49,5 +49,5 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
 
 RUN apt install -y build-essential rubygems ruby-dev && gem install solargraph
 
-RUN nvim --headless +"call job_start(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
+RUN nvim --headless +"call jobstart(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +"call timer_start(45000, {-> execute('qall')})"
