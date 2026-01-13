@@ -20,7 +20,7 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
     cd ~/.cache/dpp/repos/github.com/Shougo/ && \
     git clone https://github.com/Shougo/dpp.vim -b v5.3.0 && \
     git clone https://github.com/Shougo/dpp-ext-installer -b v2.2.0 && \
-    git clone https://github.com/Shougo/dpp-protocol-git -b v1.1.1 && \
+    git clone https://github.com/Shougo/dpp-protocol-git -b v2.0.0 && \
     git clone https://github.com/Shougo/dpp-ext-lazy -b v1.5.0 && \
     git clone https://github.com/Shougo/dpp-ext-toml -b v1.3.0
 
