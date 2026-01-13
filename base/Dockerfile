@@ -13,7 +13,7 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x
     rm nvim-linux-x86_64.tar.gz
 
 RUN curl -fsSLO https://deno.land/install.sh && \
-    DENO_INSTALL=/usr/local sh install.sh v2.1.4 && \
+    DENO_INSTALL=/usr/local sh install.sh v2.6.4 && \
     rm install.sh
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
