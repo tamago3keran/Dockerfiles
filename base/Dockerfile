@@ -26,7 +26,7 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
     cd ~/.cache/dpp/repos/github.com/vim-denops/ && \
-    git clone https://github.com/vim-denops/denops.vim -b v7.0.4
+    git clone https://github.com/vim-denops/denops.vim -b v8.0.1
 
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
