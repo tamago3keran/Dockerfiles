@@ -44,7 +44,7 @@ RUN rm -f ~/.bashrc && \
     ln -s /dotfiles/.config/hooks ~/.config/hooks && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
     apt install -y nodejs && \
     npm install -g @johnnymorganz/stylua-bin
 
