@@ -33,5 +33,7 @@ jobs:
           push: true
           file: ./Dockerfile
           platforms: linux/amd64
-          tags: tamago3keran/dotfiles:${{ github.event.inputs.version }}
+          tags: |
+            tamago3keran/dotfiles:${{ github.event.inputs.version }}
+            tamago3keran/dotfiles:latest
           cache-to: type=local,dest=/tmp/docker-cache
