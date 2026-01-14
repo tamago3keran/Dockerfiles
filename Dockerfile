@@ -55,9 +55,5 @@ RUN npm install -g @johnnymorganz/stylua-bin && \
 
 RUN npm install -g @anthropic-ai/claude-code
 
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    npm cache clean --force
-
 RUN nvim --headless +"call jobstart(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +"call timer_start(45000, {-> execute('qall')})"
