@@ -45,8 +45,13 @@ RUN rm -f ~/.bashrc && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
 RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
-    apt install -y nodejs && \
-    npm install -g @johnnymorganz/stylua-bin
+    apt install -y nodejs
+
+RUN npm install -g @johnnymorganz/stylua-bin && \
+    npm install -g vim-language-server && \
+    npm install -g pyright && \
+    npm install -g typescript typescript-language-server vscode-langservers-extracted && \
+    apt install -y build-essential rubygems ruby-dev && gem install solargraph
 
 RUN npm install -g @anthropic-ai/claude-code
 
