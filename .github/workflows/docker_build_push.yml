@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          file: ./base/Dockerfile
+          file: ./Dockerfile
           platforms: linux/amd64
           tags: tamago3keran/dotfiles:${{ github.event.inputs.version }}
           cache-to: type=local,dest=/tmp/docker-cache
