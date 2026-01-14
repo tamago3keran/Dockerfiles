@@ -31,7 +31,7 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
 RUN apt install -y locales && \
     locale-gen ja_JP.UTF-8
 
-RUN git clone -b base https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
+RUN git clone -b main https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
 RUN rm -f ~/.bashrc && \
     rm -f ~/.config/nvim/init.vim && \
