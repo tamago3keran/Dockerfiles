@@ -1,6 +1,11 @@
 name: docker_build_push
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Docker image version (e.g., 1.0.0)'
+        required: true
 
 jobs:
   build:
@@ -28,5 +33,5 @@ jobs:
           push: true
           file: ./base/Dockerfile
           platforms: linux/amd64
-          tags: tamago3keran/dotfiles:base
+          tags: tamago3keran/dotfiles:${{ github.event.inputs.version }}
           cache-to: type=local,dest=/tmp/docker-cache
