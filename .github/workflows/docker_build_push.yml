@@ -1,11 +1,10 @@
 name: docker_build_push
 
 on:
+  push:
+    branches:
+      - '**'
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Docker image version (e.g., 1.0.0)'
-        required: true
 
 jobs:
   build:
@@ -13,7 +12,16 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: tamago3keran/dotfiles
+          tags: |
+            type=sha
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -33,7 +41,6 @@ jobs:
           push: true
           file: ./Dockerfile
           platforms: linux/amd64
-          tags: |
-            tamago3keran/dotfiles:${{ github.event.inputs.version }}
-            tamago3keran/dotfiles:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-to: type=local,dest=/tmp/docker-cache
