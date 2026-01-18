@@ -1,10 +1,11 @@
 name: docker_build_push
 
 on:
-  push:
-    branches:
-      - '**'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Docker image version (e.g., 1.0.0)'
+        required: false
 
 jobs:
   build:
@@ -22,6 +23,7 @@ jobs:
           tags: |
             type=sha
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=${{ inputs.version }},enable=${{ inputs.version != '' }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
