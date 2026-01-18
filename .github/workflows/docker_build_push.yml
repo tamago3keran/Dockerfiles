@@ -1,6 +1,7 @@
 name: docker_build_push
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       version:
@@ -21,9 +22,9 @@ jobs:
         with:
           images: tamago3keran/dotfiles
           tags: |
-            type=sha
+            type=raw,value=test_for_${{ github.event.number }},enable=${{ github.event_name == 'pull_request' }}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
-            type=raw,value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+            type=raw,value=${{ inputs.version }},enable=${{ inputs.version != '' && github.ref == 'refs/heads/main' }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
