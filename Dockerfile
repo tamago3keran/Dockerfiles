@@ -44,14 +44,5 @@ RUN rm -f ~/.bashrc && \
     ln -s /dotfiles/.config/hooks ~/.config/hooks && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
-    apt install -y nodejs
-
-RUN npm install -g @johnnymorganz/stylua-bin && \
-    npm install -g vim-language-server && \
-    npm install -g pyright && \
-    npm install -g typescript typescript-language-server vscode-langservers-extracted && \
-    apt install -y build-essential rubygems ruby-dev && gem install solargraph
-
 RUN nvim --headless +"call jobstart(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +"call timer_start(45000, {-> execute('qall')})"
