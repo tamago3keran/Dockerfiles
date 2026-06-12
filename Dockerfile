@@ -1,8 +1,8 @@
 FROM ubuntu:24.04
 
-RUN apt update && \
-    apt-get update && \
-    apt install -y curl git ripgrep tar unzip vim wget gcc make
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl git ripgrep tar unzip vim wget build-essential && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz && \
     tar -zxvf nvim-linux-x86_64.tar.gz && \
