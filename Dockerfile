@@ -4,7 +4,7 @@ RUN apt update && \
     apt-get update && \
     apt install -y curl git ripgrep tar unzip vim wget gcc
 
-RUN wget https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz && \
+RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz && \
     tar -zxvf nvim-linux-x86_64.tar.gz && \
     mv nvim-linux-x86_64/bin/nvim usr/bin/nvim && \
     mv nvim-linux-x86_64/lib/nvim usr/lib/nvim && \
