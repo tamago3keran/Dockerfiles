@@ -12,12 +12,10 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x
     rm -rf nvim-linux-x86_64 && \
     rm nvim-linux-x86_64.tar.gz
 
-RUN git clone https://github.com/tree-sitter/tree-sitter-ruby.git && \
-    cd tree-sitter-ruby && \
-    gcc -o ruby.so -I./src src/parser.c src/scanner.c -shared -Os -fPIC && \
+RUN git clone --depth 1 -b v0.23.1 https://github.com/tree-sitter/tree-sitter-ruby.git && \
+    gcc -o ruby.so -I tree-sitter-ruby/src tree-sitter-ruby/src/parser.c tree-sitter-ruby/src/scanner.c -shared -Os -fPIC && \
     mkdir -p /usr/lib/nvim/parser && \
     mv ruby.so /usr/lib/nvim/parser/ && \
-    cd .. && \
     rm -rf tree-sitter-ruby
 
 RUN curl -fsSLO https://deno.land/install.sh && \
