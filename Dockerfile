@@ -5,7 +5,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     locale-gen ja_JP.UTF-8
 
-RUN curl -fsSL https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz \
+RUN curl -fsSL https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz \
         -o nvim-linux-x86_64.tar.gz && \
     tar -zxf nvim-linux-x86_64.tar.gz && \
     mv nvim-linux-x86_64/bin/nvim /usr/bin/nvim && \
