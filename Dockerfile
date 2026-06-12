@@ -4,13 +4,13 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends curl git ripgrep tar unzip vim wget build-essential && \
     rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz \
-        -o nvim-linux-x86_64.tar.gz && \
-    tar -zxf nvim-linux-x86_64.tar.gz && \
-    mv nvim-linux-x86_64/bin/nvim /usr/bin/nvim && \
-    mv nvim-linux-x86_64/lib/nvim /usr/lib/nvim && \
-    mv nvim-linux-x86_64/share/nvim/ /usr/share/nvim && \
-    rm -rf nvim-linux-x86_64 nvim-linux-x86_64.tar.gz
+RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz && \
+    tar -zxvf nvim-linux-x86_64.tar.gz && \
+    mv nvim-linux-x86_64/bin/nvim usr/bin/nvim && \
+    mv nvim-linux-x86_64/lib/nvim usr/lib/nvim && \
+    mv nvim-linux-x86_64/share/nvim/ usr/share/nvim && \
+    rm -rf nvim-linux-x86_64 && \
+    rm nvim-linux-x86_64.tar.gz
 
 RUN git clone --depth 1 -b v0.23.1 https://github.com/tree-sitter/tree-sitter-ruby.git && \
     gcc -o ruby.so \
