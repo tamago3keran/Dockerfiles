@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl git ripgrep tar unzip vim wget build-essential && \
+    apt-get install -y --no-install-recommends ca-certificates curl git ripgrep tar unzip vim wget build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz \
