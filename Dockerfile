@@ -1,8 +1,9 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates curl git ripgrep tar unzip vim wget build-essential && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends ca-certificates curl git locales ripgrep tar unzip vim wget build-essential && \
+    rm -rf /var/lib/apt/lists/* && \
+    locale-gen ja_JP.UTF-8
 
 RUN curl -fsSL https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz \
         -o nvim-linux-x86_64.tar.gz && \
@@ -38,8 +39,6 @@ RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
     cd ~/.cache/dpp/repos/github.com/vim-denops/ && \
     git clone https://github.com/vim-denops/denops.vim -b v8.0.1
 
-RUN apt install -y locales && \
-    locale-gen ja_JP.UTF-8
 
 RUN git clone -b main https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
