@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 RUN apt update && \
     apt-get update && \
-    apt install -y curl git ripgrep tar unzip vim wget gcc
+    apt install -y curl git ripgrep tar unzip vim wget gcc make
 
 RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz && \
     tar -zxvf nvim-linux-x86_64.tar.gz && \
@@ -13,9 +13,9 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x
     rm nvim-linux-x86_64.tar.gz
 
 RUN git clone --depth 1 -b v0.23.1 https://github.com/tree-sitter/tree-sitter-ruby.git && \
-    gcc -o ruby.so -I tree-sitter-ruby/src tree-sitter-ruby/src/parser.c tree-sitter-ruby/src/scanner.c -shared -Os -fPIC && \
+    make -C tree-sitter-ruby && \
     mkdir -p /usr/lib/nvim/parser && \
-    mv ruby.so /usr/lib/nvim/parser/ && \
+    mv tree-sitter-ruby/libtree-sitter-ruby.so /usr/lib/nvim/parser/ruby.so && \
     rm -rf tree-sitter-ruby
 
 RUN curl -fsSLO https://deno.land/install.sh && \
