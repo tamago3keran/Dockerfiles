@@ -24,7 +24,7 @@ RUN git clone --depth 1 -b v0.23.1 https://github.com/tree-sitter/tree-sitter-ru
     rm -rf tree-sitter-ruby
 
 RUN curl -fsSLO https://deno.land/install.sh && \
-    DENO_INSTALL=/usr/local sh install.sh v2.6.4 && \
+    DENO_INSTALL=/usr/local sh install.sh v2.8.3 && \
     rm install.sh
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
