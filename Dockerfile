@@ -52,5 +52,5 @@ RUN rm -f ~/.bashrc && \
     ln -s /dotfiles/.config/hooks ~/.config/hooks && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN nvim --headless +"call jobstart(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(15000, {-> execute('qall')})"
+RUN nvim --headless +"call jobstart(['nvim', '--headless', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")', '+qall'])" +"call timer_start(30000, {-> execute('qall')})"
 RUN nvim --headless +"call dpp#async_ext_action('installer', 'install')" +"call timer_start(45000, {-> execute('qall')})"
