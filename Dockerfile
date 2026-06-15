@@ -52,5 +52,5 @@ RUN rm -f ~/.bashrc && \
     ln -s /dotfiles/.config/hooks ~/.config/hooks && \
     ln -s /dotfiles/.bash_boot_scripts/ ~/.bash_boot_scripts
 
-RUN nvim --headless +"let job = jobstart(['nvim', '--headless', '--cmd', 'autocmd User Dpp:makeStatePost qall', '+call dpp#make_state(\"~/.cache/dpp\", \"~/.config/dpp/dpp.ts\")'])" +"call jobwait([job])" +"qall"
-RUN nvim --headless +"let job = jobstart(['nvim', '--headless', '--cmd', 'autocmd User Dpp:extActionPost:installer:install qall', '+call dpp#async_ext_action(''installer'', ''install'')'])" +"call jobwait([job])" +"qall"
+RUN nvim --headless --cmd "autocmd User Dpp:makeStatePost qall" +"call dpp#make_state('~/.cache/dpp', '~/.config/dpp/dpp.ts')"
+RUN nvim --headless --cmd "autocmd User Dpp:extActionPost:installer:install qall" +"call dpp#async_ext_action('installer', 'install')"
