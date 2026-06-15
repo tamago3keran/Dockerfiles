@@ -29,17 +29,17 @@ RUN curl -fsSLO https://deno.land/install.sh && \
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
     cd ~/.cache/dpp/repos/github.com/Shougo/ && \
-    git clone -b v6.4.0 https://github.com/Shougo/dpp.vim && \
-    git clone https://github.com/Shougo/dpp-ext-installer && \
-    git clone https://github.com/Shougo/dpp-protocol-git && \
-    git clone https://github.com/Shougo/dpp-ext-lazy && \
-    git clone https://github.com/Shougo/dpp-ext-toml
+    git clone --depth 1 -b v6.4.0 https://github.com/Shougo/dpp.vim && \
+    git clone --depth 1 https://github.com/Shougo/dpp-ext-installer && \
+    git clone --depth 1 https://github.com/Shougo/dpp-protocol-git && \
+    git clone --depth 1 https://github.com/Shougo/dpp-ext-lazy && \
+    git clone --depth 1 https://github.com/Shougo/dpp-ext-toml
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/vim-denops/ && \
     git clone --depth 1 -b v8.0.2 https://github.com/vim-denops/denops.vim ~/.cache/dpp/repos/github.com/vim-denops/denops.vim
 
 
-RUN git clone -b main https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
+RUN git clone --depth 1 -b main https://github.com/tamago3keran/dotfiles_for_docker.git dotfiles
 
 RUN rm -f ~/.bashrc && \
     rm -f ~/.config/nvim/init.vim && \
