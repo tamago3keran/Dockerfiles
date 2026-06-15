@@ -29,7 +29,7 @@ RUN curl -fsSLO https://deno.land/install.sh && \
 
 RUN mkdir -p ~/.cache/dpp/repos/github.com/Shougo/ && \
     cd ~/.cache/dpp/repos/github.com/Shougo/ && \
-    git clone -b v6.0.0 https://github.com/Shougo/dpp.vim && \
+    git clone -b v6.4.0 https://github.com/Shougo/dpp.vim && \
     git clone https://github.com/Shougo/dpp-ext-installer && \
     git clone https://github.com/Shougo/dpp-protocol-git && \
     git clone https://github.com/Shougo/dpp-ext-lazy && \
